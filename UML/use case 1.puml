@@ -1,0 +1,6 @@
+
+actor Commercial
+actor Client
+
+
+Commercial -- (Enregistrer une commande)
