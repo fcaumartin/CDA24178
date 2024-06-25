@@ -1,0 +1,59 @@
+@startuml
+
+!define table(x) entity x << (T, white) >>
+!define primary_key(x) <b><&key> x</b>
+!define column(x) <&media-record> x
+
+skinparam backgroundcolor White
+skinparam class {
+  BackgroundColor GhostWhite
+  ArrowColor Black
+  BorderColor Gray
+}
+skinparam shadowing false
+skinparam legend {
+  backgroundColor #GhostWhite
+  entrySeparator #GhostWhite
+}
+
+class Produit {
+  primary_key( id ) : int
+  -nom : string 
+  -image : string 
+  -description : string 
+  -prix : string 
+}
+
+class Categorie {
+  primary_key( id ) : int
+  -nom : string 
+  -image : string 
+}
+
+Produit "*" -- "1" Categorie
+Categorie "*" -- "1" Categorie
+
+package Legend {
+  legend
+    <#GhostWhite,#GhostWhite>|= Color |= Group |
+  end legend
+  class Class {
+    -privateAttribute:type
+    #protectedAttribute:type
+    +publicAttribute:type
+    -privateMethod()
+    #protectedMethod()
+    +publicMethod()
+  }
+
+  abstract Abstract {
+    attribute:type
+  }
+}
+
+note top of Legend
+  This document complies with plantuml.com recommendations
+  (See https://plantuml.com/en/class-diagram).
+end note
+
+@enduml
