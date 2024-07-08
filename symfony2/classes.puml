@@ -30,6 +30,13 @@ class Categorie {
   -image : string 
 }
 
+class User {
+  primary_key( id ) : int
+  -email : string 
+  -roles : array 
+  -password : string 
+}
+
 Produit "*" -- "1" Categorie
 Categorie "*" -- "1" Categorie
 

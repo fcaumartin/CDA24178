@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Categorie;
+use App\Entity\Produit;
 use App\Repository\CategorieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +31,28 @@ class CatalogueController extends AbstractController
 
         return $this->render('catalogue/categorie.html.twig', [
             'categorie' => $categorie,
+        ]);
+    }
+
+    #[Route('/produits/{id}', name: 'app_produits')]
+    public function produits(Categorie $categorie): Response
+    {
+
+        // dd($id);
+
+        return $this->render('catalogue/produits.html.twig', [
+            'categorie' => $categorie,
+        ]);
+    }
+
+    #[Route('/produit/{id}', name: 'app_produit')]
+    public function produit(Produit $produit): Response
+    {
+
+        // dd($id);
+
+        return $this->render('catalogue/produit.html.twig', [
+            'produit' => $produit,
         ]);
     }
 }

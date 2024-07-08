@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Categorie;
 use App\Entity\Produit;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -50,6 +51,32 @@ class Jeu1 extends Fixture
         $manager->persist($p1);
 
         $p1->setCategorie($sc1);
+
+        $p2 = new Produit();
+        $p2->setNom("Gibson");
+        $p2->setImage("");
+        $p2->setPrix(2500);
+        $p2->setDescription("");
+        $manager->persist($p2);
+
+        $p2->setCategorie($sc1);
+
+        $p3 = new Produit();
+        $p3->setNom("Les Paul");
+        $p3->setImage("Strato");
+        $p3->setPrix(2500);
+        $p3->setDescription("");
+        $manager->persist($p3);
+
+        $p3->setCategorie($sc1);
+
+
+        $u = new User();
+
+        $u->setEmail("toto@gmail.com");
+        $u->setPassword("");
+
+        $manager->persist($u);
 
 
         $manager->flush();
