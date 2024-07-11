@@ -49,14 +49,19 @@
                             <ul class="navbar-nav mb-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="/panier">Panier</a>
-                                    <span>
+                                    {% if app.user %}
+                                        <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+                                    {% else %}
+                                        <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                                    {% endif %}
+                                    {# <span>
                                         {{ app.session.get("panier") | length }}
                                     </span>
                                     <span>
                                         {{ render(controller(
                                             'App\\Controller\\PanierController::calcul_quantite'
                                         )) }}
-                                    </span>
+                                    </span> #}
                                 </li>
                                 
                             </ul>

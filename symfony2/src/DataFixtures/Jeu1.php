@@ -2,14 +2,22 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Categorie;
-use App\Entity\Produit;
 use App\Entity\User;
-use Doctrine\Bundle\FixturesBundle\Fixture;
+use App\Entity\Produit;
+use App\Entity\Categorie;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class Jeu1 extends Fixture
 {
+    private $hasher;
+
+    public function __construct(UserPasswordHasherInterface $hasher) {
+        $this->hasher = $hasher;
+    }
+
+
     public function load(ObjectManager $manager): void
     {
         $c1 = new Categorie();
@@ -74,7 +82,8 @@ class Jeu1 extends Fixture
         $u = new User();
 
         $u->setEmail("toto@gmail.com");
-        $u->setPassword("");
+        $password=$this->hasher->hashPassword($u, "4567");
+        $u->setPassword($password);
 
         $manager->persist($u);
 

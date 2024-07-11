@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProduitController!{% endblock %}
+
+{% block body %}
+Ajout produit
+
+{{ form_start(form)  }}
+
+    {{ form_row(form.nom) }}
+
+{{ form_end(form)  }}
+
+{% endblock %}
